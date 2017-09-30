@@ -7,6 +7,7 @@ class Calculator {
   add(input) {
     let result;
     let separator = /[,\n]/;
+    let answer;
 
     function isPositive(number) {
       return number => 0;
@@ -33,15 +34,14 @@ class Calculator {
         .map((x) => { return x === "" ? 0 : parseInt(x) });
 
       if(result.every(isPositive)) {
-        let answer = result.reduce((x, s) => { return x + s }, 0);
-        return answer;
+        answer = result.reduce((x, s) => { return x + s }, 0);
       }
 
       if (result.some(isNegative)) {
-        let answer2 = result.filter((x) => { return x < 0 });
-        return 'Отрицательные числа не допустимы ' + answer2;
+        answer = result.filter((x) => { return x < 0 });
+        return 'Отрицательные числа не допустимы ' + answer;
       }
-
+    return answer;
     }
   }
 }
